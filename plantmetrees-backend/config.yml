@@ -1,0 +1,33 @@
+####################################################################################################
+#   This is the PMT server configuration file                                                      #
+####################################################################################################
+--- # Config begin
+
+# Define debug
+debug_level: debug
+    # error: 0, warn: 1, info: 2, vebose: 3, debug: 4 
+
+# Sequelize connection props
+sequelize:
+    db_name: pmt_db
+    user: root
+    password: deadorchardarmbar
+    connection:
+        host: "127.0.0.1"
+        port: 3306
+        dialect: mysql
+        define:
+            charset: utf8mb4
+            collate: utf8mb4_0900_ai_ci
+            underscore: false
+        logging: false
+    force_sync: true
+
+auth:
+    session:
+        secret: "s3cr37? Wh47 s3cr37?"
+        resave: true
+        saveUninitialized: true
+
+... # Config end
+####################################################################################################

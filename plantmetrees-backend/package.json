@@ -1,0 +1,35 @@
+{
+  "name": "plantmetrees-backend",
+  "version": "0.0.1",
+  "description": "The PlantMeTrees platform backend.",
+  "main": "pmt_server.js",
+  "scripts": {
+    "start": "node pmt_server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "plantmetrees",
+    "backend"
+  ],
+  "devDependencies": {
+    "eslint": "^6.4.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "js-sha3": "^0.8.0",
+    "js-yaml": "^3.13.1",
+    "method-override": "^3.0.0",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.7.0",
+    "passport": "^0.4.0",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^5.19.0",
+    "uuidv4": "^5.0.1",
+    "winston": "^3.2.1"
+  }
+}

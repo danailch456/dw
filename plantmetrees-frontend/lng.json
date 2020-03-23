@@ -1,0 +1,705 @@
+{
+    "mission": {
+        "menu": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "caption": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "content": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        }
+    },
+    "services": {
+        "menu": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "caption": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "content": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "submenu_1": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "subcaption_1": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "subcontent_1": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "submenu_2": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "subcaption_2": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "subcontent_2": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "submenu_3": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "subcaption_3": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "subcontent_3": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "submenu_4": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "subcaption_4": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "subcontent_4": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "submenu_5": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "subcaption_5": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "subcontent_5": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        }
+    },
+    "ptrees": {
+        "menu": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "map": {
+            "caption": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "tree_l1": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "tree_l2": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "tree_l3": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "tree_l4": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "forest_l1": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "forest_l2": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "forest_l3": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            }
+        },
+        "stat": {
+            "value1": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "unit1_si": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "unit1_us": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "value2": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "unit2_si": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "unit2_us": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "value3": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "unit3_si": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "unit3_us": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+
+            },
+            "value4": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+
+            },
+            "unit4_si": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+
+            },
+            "unit4_us": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            }
+        },
+        "stat_2": {
+            "value1": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "unit1_si": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "unit1_us": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            }
+        }
+    },
+    "campaigns": {
+        "menu": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "caption": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "content": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            },
+            "listname": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "list_id": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "list_name": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "list_treetarget": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "list_forests": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "list_forest_name": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "list_bugs_hotels": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "list_area": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "list_owner": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            }
+        }
+    },
+    "profile": {
+        "menu": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "bttn_login": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "chkbx_signin": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "bttn_signin": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "field": {
+            "username": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "password": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "password_2": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "email": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            }
+        }
+    },
+    "plant": {
+        "caption": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "intro_text": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "option_anonym": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "iframe_data": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "bttn_confirm": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "bttn_cancel": {
+            "text": {
+                "en": "",
+                "de": "",
+                "bg": "",
+                "es": ""
+            }
+        },
+        "faq": {
+            "menu": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "caption": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "content": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            }
+        },
+        "forus": {
+            "menu": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "caption": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "content": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            }
+        },
+        "header": {
+            "bttn_menu": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "bttn_plant": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            }
+        },
+        "footer": {
+            "rights": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "facebook": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "linkedin": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "instagram": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            },
+            "viber": {
+                "text": {
+                    "en": "",
+                    "de": "",
+                    "bg": "",
+                    "es": ""
+                }
+            }
+        }
+    }
+}

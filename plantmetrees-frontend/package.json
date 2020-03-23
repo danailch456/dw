@@ -1,0 +1,28 @@
+{
+  "name": "plantmetrees-frontend",
+  "version": "0.0.1",
+  "description": "The PMT platform frontend.",
+  "main": "pmt_client.js",
+  "repository": "https://lvidov@bitbucket.org/plantmetrees/plantmetrees-frontend.git",
+  "author": "Lyubomir Vidov <lyubomir.vidov@plantmetrees.com>",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.7.8",
+    "angular-animate": "^1.7.8",
+    "angular-aria": "^1.7.8",
+    "angular-base64": "^2.0.5",
+    "angular-material": "^1.1.20",
+    "angular-messages": "^1.7.8",
+    "angular-openlayers-directive": "^2.1.0",
+    "angular-resource": "^1.7.8",
+    "angular-route": "^1.7.8",
+    "angular-sanitize": "^1.7.9",
+    "angular-storage": "^0.0.15",
+    "material-icons": "^0.3.1",
+    "ol": "^6.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.4.0"
+  }
+}

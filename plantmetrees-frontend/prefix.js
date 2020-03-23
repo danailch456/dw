@@ -1,0 +1,1 @@
+module.exports = `http://localhost:8089/rest/v1/`;

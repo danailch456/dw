@@ -1,0 +1,103 @@
+<div id="main-view-container" role="main-view" class="pmt-content" ng-cloak="" flex>
+    <md-toolbar md-whiteframe="4" class="md-menu-toolbar pmt-header" flex>
+        <div class="md-toolbar-tools">
+            <md-button id="menu" class="md-icon-button md-primary md-hue-2 menu-button" hide-gt-md
+                aria-label="PlantMeTrees" ng-click="toggleLeftNav()">
+                <md-tooltip md-delay="3" md-direction="right" md-colors="{background:'primary-100'}">Navigate
+                </md-tooltip>
+                <md-icon class="material-icon">menu</md-icon>
+            </md-button>
+            <img ng-src="/images/app/pmt_logo_h.svg" class="pmt-header-logo" hide-sm hide-xs>
+            <img ng-src="/images/app/pmt_logo_v.svg" class="pmt-header-logo" hide-gt-sm>
+            <div flex=""></div>
+            <div hide-sm hide-xs>
+                <md-menu-bar>
+                    <md-menu>
+                        <button class="md-button-toggle md-button md-ink-ripple" ng-click="$mdMenu.open()">
+                            ABOUT US
+                            <span flex="" class="flex"></span>
+                            <span ng-class="{'rotate180': $mdMenuIsOpen, 'rotate-back': !$mdMenuIsOpen}"
+                                aria-hidden="true">
+                                <md-icon ng-class="material-icon">
+                                    expand_more
+                                </md-icon>
+                            </span>
+                        </button>
+                        <md-menu-content>
+                            <md-menu-item>
+                                <md-button ng-click="">
+                                    MOCK...
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                    <md-menu>
+                        <md-button ng-click="$mdMenu.open()">
+                            YOUR GREENPRINT
+                            <span flex="" class="flex"></span>
+                            <span ng-class="{'rotate180': $mdMenuIsOpen, 'rotate-back': !$mdMenuIsOpen}"
+                                aria-hidden="true">
+                                <md-icon ng-class="material-icon">
+                                    expand_more
+                                </md-icon>
+                            </span>
+                        </md-button>
+                        <md-menu-content>
+                            <md-menu-item class="md-indent">
+                                <md-button ng-click="">
+                                    MOCK...
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                    <md-button ng-click="switch('campaigns')">
+                        CAMPAIGNS
+                    </md-button>
+                    <md-button ng-click="switch('map')">
+                        MAP
+                    </md-button>
+                    <md-button ng-click="$mdMenu.open()">
+                        NEWS
+                    </md-button>
+                    <md-button ng-click="$mdMenu.open()">
+                        SHOP
+                    </md-button>
+                    <md-button class="md-fab md-mini md-accent plant-button pulse-button" aria-label="Plant trees!">
+                        <md-tooltip md-delay="3" md-direction="right" md-colors="{background:'accent-100'}">Plant trees!
+                        </md-tooltip>
+                        <md-icon class="material-icon md-primary">nature_people</md-icon>
+                    </md-button>
+                </md-menu-bar>
+            </div>
+            <md-button id="login" class="login-button" aria-label="Login" md-colors="{background:'primary-600'}" hide-sm
+                hide-xs>LOGIN</md-button>
+            <md-button class="md-icon-button md-primary md-hue-2" aria-label="Language">LNG</md-button>
+        </div>
+    </md-toolbar>
+    <div ng-hide="display('campaigns')" class="ng-hide">
+        <h1>
+            CAMPAIGNS
+        </h1>
+    </div>
+    <div ng-hide="display('map')" class="ng-hide" ng-controller="MapController" >
+        <div id="map" class="map">
+            <div id="statisticsMenu" class="ol-control-panel ol-unselectable ol-control"></div>
+        </div>
+    </div>
+    <md-content ng-hide="display('home')" class="ng-hide">
+        <div id="section-cto" flex="" layout="row" class="section bkg-home"
+            ng-include="'../sections/home/cto.home.html'"></div>
+        <div id="section-about-roots" layout="row" flex="" class="section bkg-roots"
+            ng-include="'../sections/home/roots.home.html'"></div>
+        <div id="section-about-mission" layout="row" flex="" class="section bkg-about"
+            ng-include="'../sections/home/mission.home.html'"></div>
+        <div id="section-about-vision" layout="row" flex="" class="section bkg-about"
+            ng-include="'../sections/home/vision.home.html'"></div>
+        <div id="section-greenprint" layout="row" flex="" class="section bkg-greenprint"
+            ng-include="'../sections/home/greenprint.home.html'"></div>
+        <div id="section-services" layout="row" flex="" class="section bkg-services"
+            ng-include="'../sections/home/services.home.html'"></div>
+        <div id="section-map" layout="row" flex="" class="section bkg-about"
+            ng-include="'../sections/home/map.home.html'"></div>
+    </md-content>
+</div>

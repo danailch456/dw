@@ -1,0 +1,43 @@
+####################################################################################################
+#   This is the PMT common properties file                                                         #
+####################################################################################################
+--- # Properties begin
+
+# PMT common rest modules list
+modules:
+    - session
+    - users
+    - role_assignments
+    - geo_tags
+    - invitation_links
+    - newsfeed_likes
+    - newsfeed_posts
+    - badges
+
+# PMT static content
+static:
+    root: ../../plantmetrees-frontend
+    index: ../../plantmetrees-frontend/index.html
+
+# PMT common endpoints
+endpoints:
+    rest: 'rest/v1'
+
+# PMT common connection ports
+ports:
+    rest: 8089
+    https: 8443
+
+oauth20:
+    facebook:
+        client_id: 1490503917778009
+        client_secret: 48fd3115b1017ee7b95a499eb58f1d2b
+    google:
+        client_id: 280546492271-o4rsf20a23pp12ham3uvjj0tvh8hscdo.apps.googleusercontent.com
+        client_secret: Wu-gmrwMHmcPn4Zgey_HYO2G
+    vkontakte:
+        client_id: 7232362
+        client_secret: zV1qxDXYZ6rBC29Z5sco
+
+... # Properties end
+####################################################################################################
