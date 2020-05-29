@@ -34,8 +34,13 @@ function restForestInsectHotelsCreate(req, res){
         return _rest.error(res, requestId, { name: 'MissingPathParameter' });
     }
 
+    if (!req.params.geoTagId) {
+        log.error(`Missing parameter 'geoTagId' for creating insect hotel in forest ${JSON.stringify(req.params)}`);
+        return _rest.error(res, requestId, { name: 'MissingPathParameter' });
+    }
+
     global.GDO.hasPerms(req.user.id, {forestId:req.params.forestId}).then(function () {
-        _handler.forestInsectHotelsCreate(req.params.forestId, function (err) {
+        _handler.forestInsectHotelsCreate(req.params.forestId, req.params.geoTagId, function (err) {
             if (err) {
                 log.error((typeof err == 'object') ? err.toString() : err);
             } else {
@@ -78,7 +83,7 @@ function restForestInsectHotelsGetConfig() {
         },
         {
             method: 'post',
-            resource: 'insectHotels/forest:forestId/tag:geotagId',
+            resource: 'insectHotels/forest:forestId/tag:geoTagId',
             apiRestriction: 'plass',
             handler: restForestInsectHotelsCreate
         },

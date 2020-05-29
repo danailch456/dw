@@ -35,7 +35,24 @@ function restForestsGet(req, res) {
         if (err) {
             return _rest.error(res, requestId, err);
         } else {
-            return _rest.response(res, 201, { url: req.path, method: req.method }, requestId, result);
+            return _rest.response(res, 200, { url: req.path, method: req.method }, requestId, result);
+        }
+    });
+}
+
+function restForestsGetById(req, res) {
+    let requestId = _rest.generateReqId();
+
+    if (!req.params.id) {
+        log.error(`Missing parameter 'id' for getting forest ${JSON.stringify(req.params)}`);
+        return _rest.error(res, requestId, { name: 'MissingPathParameter' });
+    }
+
+    _handler.forestsGetById(req.params.id, function (err, result) {
+        if (err) {
+            return _rest.error(res, requestId, err);
+        } else {
+            return _rest.response(res, 200, { url: req.path, method: req.method }, requestId, result);
         }
     });
 }
@@ -73,12 +90,13 @@ function restForestsEdit(req, res) {
 
     global.GDO.hasPerms(req.user.id, { forestId: req.params.id }).then(function () {
         let forestObj = parseBody(req.body);
+        forestObj.id = req.params.id;
 
-        _handler.forestsCreate(forestObj, function (err) {
+        _handler.forestsEdit(forestObj, function (err) {
             if (err) {
                 log.error((typeof err == 'object') ? err.toString() : err);
             } else {
-                return _rest.response(res, 201, { url: req.path, method: req.method }, requestId);
+                return _rest.response(res, 200, { url: req.path, method: req.method }, requestId);
             }
         });
     }).catch(function () {
@@ -95,14 +113,14 @@ function restForestsDelete(req, res) {
     }
 
     global.GDO.hasPerms(req.user.id, { forestId: req.params.id }).then(function () {
-        _handler.forestsCreate(forestObj, function (err) {
+        _handler.forestsDelete(req.params.id, function (err) {
             if (err) {
                 log.error((typeof err == 'object') ? err.toString() : err);
             } else {
-                return _rest.response(res, 201, { url: req.path, method: req.method }, requestId);
+                return _rest.response(res, 200, { url: req.path, method: req.method }, requestId);
             }
         });
-    }).catch(function () {
+    }).catch(function (err) {
         return _rest.error(res, requestId, { name: 'PermissionDenied' });
     });
 }
@@ -113,25 +131,31 @@ function restForestsGetConfig() {
             method: 'get',
             resource: 'forests/campaign:campaignId?',
             apiRestriction: 'base',
-            handler: restForestsGet
+            handler: restForestsGet//D
+        },
+        {
+            method: 'get',
+            resource: 'forests/forest:id',
+            apiRestriction: 'base',
+            handler: restForestsGetById//D
         },
         {
             method: 'post',
             resource: 'forests',
             apiRestriction: 'plass',
-            handler: restForestsCreate
+            handler: restForestsCreate//D
         },
         {
             method: 'put',
             resource: 'forests/:id',
             apiRestriction: 'plass',
-            handler: restForestsEdit
+            handler: restForestsEdit//D
         },
         {
             method: 'delete',
             resource: 'forests/:id',
             apiRestriction: 'plass',
-            handler: restForestsDelete
+            handler: restForestsDelete//D
         }
     ]
 }

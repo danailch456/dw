@@ -129,13 +129,11 @@ function modelsInit(_sequelizeHdlr) {
             primaryKey: true
         },
         latitude: {
-            /* Latitudes range from -90 to +90 degrees */
-            type: Sequelize.DECIMAL,
+            type: Sequelize.FLOAT,
             allowNull: false
         },
         longitude: {
-            /* Longitudes range from -180 to +180 degrees */
-            type: Sequelize.DECIMAL,
+            type: Sequelize.FLOAT,
             allowNull: false
         },
         altitude: {
@@ -174,12 +172,8 @@ function modelsInit(_sequelizeHdlr) {
     });
 
     const Polygons = _sequelizeHdlr.define('polygons', {
-        longitude: {
-            type: Sequelize.DECIMAL,
-            allowNull: false
-        },
-        latitude: {
-            type: Sequelize.DECIMAL,
+        data: {
+            type: Sequelize.JSON,
             allowNull: false
         }
     }, {
@@ -219,6 +213,11 @@ function modelsInit(_sequelizeHdlr) {
     });
 
     const ForestInsectHotels = _sequelizeHdlr.define('forest_insect_hotels', {
+        id: {
+            type: Sequelize.INTEGER.UNSIGNED,
+            autoIncrement: true,
+            primaryKey: true
+        },
         // Prepare model to be passed as relation
     }, {
         hooks: _hooks.ForestInsectHotels
@@ -251,6 +250,11 @@ function modelsInit(_sequelizeHdlr) {
     });
 
     const CampaignVolunteers = _sequelizeHdlr.define('campaign_volunteers', {
+        id: {
+            type: Sequelize.INTEGER.UNSIGNED,
+            autoIncrement: true,
+            primaryKey: true
+        },
         // Prepare model to be passed as relation
     }, {
         hooks: _hooks.CampaignVolunteers
@@ -412,7 +416,9 @@ function modelsInit(_sequelizeHdlr) {
         Forests,
         ForestInsectHotels,
         NewsfeedLikes,
-        NewsfeedPosts
+        NewsfeedPosts,
+        Polygons,
+        Transactions
     }
 }
 

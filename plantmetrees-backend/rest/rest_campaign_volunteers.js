@@ -68,7 +68,7 @@ function restCampaignVolunteersDeleteCampaign(req, res) {
         return _rest.error(res, requestId, { name: 'MissingPathParameter' });
     }
 
-    _handler.campaignVolunteersDeleteCampaign(req.params.campaignId, req.user.id , function (err) {
+    _handler.campaignVolunteersDelete(req.params.campaignId, req.user.id , function (err) {
         if (err) {
             return _rest.error(res, requestId, err);
         } else {
@@ -86,7 +86,7 @@ function restCampaignVolunteersDeleteUser(req, res){
     }
 
     global.GDO.hasPerms(req.user.id, {campaignId:req.params.campaignId}).then(function () {
-        _handler.campaignVolunteersDeleteVolunteers(req.params.campaignId, req.params.userId, function (err) {
+        _handler.campaignVolunteersDelete(req.params.campaignId, req.params.userId, function (err) {
             if (err) {
                 return _rest.error(res, requestId, err);
             } else {

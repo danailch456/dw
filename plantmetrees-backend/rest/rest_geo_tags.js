@@ -38,6 +38,8 @@ function restGeoTagCreate(req, res) {
 
     let geoTagObject = parseBody(req.body);
 
+    geoTagObject.identityHash = '';
+
     _handler.geoTagCreate(geoTagObject, function (err) {
         if (err) {
             return _rest.error(res, requestId, err);

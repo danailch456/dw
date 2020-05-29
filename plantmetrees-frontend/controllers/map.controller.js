@@ -1,58 +1,25 @@
 pmtApp.controller('MapController', function (
     $window,
     $scope,
-    requests
+    $http
 ) {
-    let geojsonObject = {
+
+    $scope.polygons = {
         "type": "FeatureCollection",
-        "features": [{
-                "type": "Feature",
-                "properties": {
-                    "name": "Switzerland"
-                },
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": [
-                        [
-                            [9.594226, 47.525058],
-                            [9.632932, 47.347601],
-                            [9.47997, 47.10281],
-                            [9.932448, 46.920728],
-                            [10.442701, 46.893546],
-                            [10.363378, 46.483571],
-                            [9.922837, 46.314899],
-                            [9.182882, 46.440215],
-                            [8.966306, 46.036932],
-                            [8.489952, 46.005151],
-                            [8.31663, 46.163642],
-                            [7.755992, 45.82449],
-                            [7.273851, 45.776948],
-                            [6.843593, 45.991147],
-                            [6.5001, 46.429673],
-                            [6.022609, 46.27299],
-                            [6.037389, 46.725779],
-                            [6.768714, 47.287708],
-                            [6.736571, 47.541801],
-                            [7.192202, 47.449766],
-                            [7.466759, 47.620582],
-                            [8.317301, 47.61358],
-                            [8.522612, 47.830828],
-                            [9.594226, 47.525058]
-                        ]
-                    ]
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Lausanne"
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [206.6339863, 46.5193823]
-                }
-            }
+        "features": [
+
         ]
+    }
+
+    function parseToGeoJson(coordinates, type) {
+        console.log(coordinates[0].data);
+        $scope.polygons.features.push({
+            "type": "Feature",
+            "geometry": {
+                "type": type,
+                "coordinates": coordinates[0].data
+            }
+        });
     }
 
     function getPoints() {
@@ -94,13 +61,26 @@ pmtApp.controller('MapController', function (
         });
 
         $scope.map.addLayer(vectorLayer);
+
+        vectorLayer.getSource().changed();
     }
 
-    displayOnMap(geojsonObject);
+
 
     $scope.map.on('moveend', function (e) {
         console.log(getPoints());
-        //$scope.statistics = requests.getStatistics(getPoints());
+        $http({
+            method: 'POST',
+            url: 'http://localhost:8089/rest/v1/statistics',
+            data: getPoints()
+        }).then(function (response) {
+            console.log(response.data.payload);
+            $scope.statistics = response.data.payload;
+        }).catch(function (err) {
+            console.error(err);
+        });
+
+        displayOnMap($scope.polygons);
     });
 
     $scope.map.on('singleclick', function (evt) {
@@ -111,4 +91,14 @@ pmtApp.controller('MapController', function (
         element: document.querySelector('#statisticsMenu')
     });
     $scope.map.addControl(statisticsMenu);
+
+    $http({
+        url: 'http://localhost:8089/rest/v1/polygons/forest',
+        method: 'GET'
+    }).then(function (response) {
+        console.log("Displaying on map");
+        parseToGeoJson(response.data.payload,'Polygon');
+    }).catch(function (err) {
+        console.error(err);
+    });
 });

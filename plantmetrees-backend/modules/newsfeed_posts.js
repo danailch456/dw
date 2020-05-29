@@ -29,8 +29,8 @@ function newsfeedPostsGet(id, pagination, perms, callback) {
         options.where.id = id;
     }
 
-    if(!perms){
-        if(!options.where){
+    if (!perms) {
+        if (!options.where) {
             options.where = {};
         }
         options.where.status = 'visible';
@@ -56,26 +56,26 @@ function newsfeedPostsCreate(newsfeedPost, callback) {
 }
 
 function newsfeedPostsEdit(newsfeedPost, callback) {
-    _db.models.NewsfeedPosts.update(newsfeedPost,
-        {
-            where: {
-                id: newsfeedPost.id
-            },
-            rejectOnEmpty: true
-        }).then(function () {
-            log.info(`Updated newsfeedPost values:${JSON.stringify(newsfeedPost)}`);
-            return callback();
-        }).catch(function (err) {
-            log.error(`Error:${(typeof err == 'object') ? err.toString() : err}, 
+    _db.models.NewsfeedPosts.update(newsfeedPost, {
+        where: {
+            id: newsfeedPost.id
+        },
+        rejectOnEmpty: true
+    }).then(function () {
+        log.info(`Updated newsfeedPost values:${JSON.stringify(newsfeedPost)}`);
+        return callback();
+    }).catch(function (err) {
+        log.error(`Error:${(typeof err == 'object') ? err.toString() : err}, 
             updating newsfeedPost:${JSON.stringify(newsfeedPost)}`);
-            return callback(err);
-        }
-        );
+        return callback(err);
+    });
 }
 
 function newsfeedPostsDelete(id, callback) {
     _db.models.NewsfeedPosts.findOne({
-        where: { id },
+        where: {
+            id
+        },
         rejectOnEmpty: true
     }).then(function (result) {
         log.info(`Deleted newsfeed post id:${id}`);

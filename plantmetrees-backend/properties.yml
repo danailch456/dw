@@ -13,6 +13,13 @@ modules:
     - newsfeed_likes
     - newsfeed_posts
     - badges
+    - campaigns
+    - forests
+    - polygons
+    - statistics
+    - campaign_volunteers
+    - transactions
+    - forest_insect_hotels
 
 # PMT static content
 static:

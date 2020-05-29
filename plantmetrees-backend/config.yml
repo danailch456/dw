@@ -10,7 +10,7 @@ debug_level: debug
 # Sequelize connection props
 sequelize:
     db_name: pmt_db
-    user: root
+    user: dani
     password: deadorchardarmbar
     connection:
         host: "127.0.0.1"
@@ -20,8 +20,8 @@ sequelize:
             charset: utf8mb4
             collate: utf8mb4_0900_ai_ci
             underscore: false
-        logging: false
-    force_sync: true
+        logging: true
+    force_sync: false
 
 auth:
     session:

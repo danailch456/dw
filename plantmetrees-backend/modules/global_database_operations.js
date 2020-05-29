@@ -94,14 +94,14 @@ function hasRole(userId, role) {
         let options = {
             where: {
                 role: {
-                    [_db.or()]: [role,'platform_admin']
-                }, 
-                grantedTo:userId
+                    [_db.or()]: [role, 'platform_admin']
+                },
+                grantedTo: userId
             },
             rejectOnEmpty: true,
             raw: true
         }
-    
+
         _db.models.RoleAssignments.findAll(options).then(function () {
             log.info(`User ${userId} has the required role: ${role}`);
             resolve();
@@ -118,10 +118,10 @@ function hasRole(userId, role) {
  * @param {*} badge 
  * @param {*} value 
  */
-function trackBadge(ownerId, badge, progress){
+function trackBadge(ownerId, badge, progress) {
     _db.models.Badges.upsert({
         ownerId,
-        type:badge,
+        type: badge,
         progress
     }).then(function (created) {
         log.info(`Upsurted badge: owner ${ownerId}, type ${badge}, operation ${created}`);
@@ -131,17 +131,127 @@ function trackBadge(ownerId, badge, progress){
     });
 }
 
+function perms(model, options) {
+    console.log(model);
+    console.log(options);
+    return new Promise(function (resolve, reject) {
+        _db.models[model].findOne(options).then(function () {
+            resolve();
+        }).catch(function (err) {
+            log.error((typeof err == 'object') ? err.toString() : err);
+            reject();
+        });
+    });
+}
+
+function inside(point, polygon) {
+    log.info(`Checking if ${point} is inside ${polygon}`);
+    if (point[0] >= polygon[0][0] && point[0] <= polygon[3][0] && point[1] >= polygon[0][1] && point[1] <= polygon[1][1]) {
+        log.info('true');
+        return true;
+    } else {
+        log.info('false');
+        return false;
+    }
+}
+
 /**
  * 
  * @param {*} userId 
- * @param {*} campaignId 
+ * @param {*} options 
  */
-function hasPerms(userId, campaignId) {
-    
+function hasPerms(userId, options) {
+    let model = '';
+    let sequlizeOptions = {
+        rejectOnEmpty: true,
+        raw: true
+    };
+    if (options.campaignId) {
+        model = 'Campaigns';
+        sequlizeOptions.where = {
+            managerId: userId,
+            id: options.campaignId
+        }
+    } else if (options.forestId) {
+        model = 'Forests'
+        sequlizeOptions.include = [{
+            model: _db.models.Campaigns,
+            required: false
+        }]
+        sequlizeOptions.where = {
+            id: options.forestId,
+            '$campaign.managerId$': userId
+        }
+    }
+    return perms(model, sequlizeOptions);
 }
 
-function getForestManager(forestId) {
-    
+function forestInPolygon(forestId, polygon) {
+    return new Promise(function (resolve, reject) {
+        const options = {
+            raw: true,
+            rejectOnEmpty: true,
+            where: {
+                forestId
+            }
+        }
+
+        _db.models.Polygons.findOne(options).then(async function (forestPolygon) {
+            let promises = [];
+
+            forestPolygon.data.forEach(point => {
+                promises.push(new Promise(function (resolve, reject) {
+                    if (inside(point, polygon)) {
+                        resolve();
+                    } else {
+                        reject({
+                            point,
+                            polygon
+                        });
+                    }
+                }));
+            });
+
+            await Promise.all(promises).then(function () {
+                log.info("Resolve in");
+                resolve();
+            }).catch(function (err) {
+                log.error(JSON.stringify(err));
+                reject();
+            });
+
+        });
+    });
+}
+
+function applyConstants(totalEstimateTrees) {
+    if (totalEstimateTrees >= 1) {
+        log.info(`Applying constants on ${totalEstimateTrees} trees`);
+        return {
+            oxygen: {
+                perDay: 0.00033 * totalEstimateTrees,
+                perYear: 0.12 * totalEstimateTrees,
+                metricSystem: 'Tonnes'
+            },
+            carbonDioxide: {
+                perDay: 0.00006 * totalEstimateTrees,
+                perYear: 0.022 * totalEstimateTrees,
+                metricSystem: 'Tonnes'
+            },
+            water: {
+                perDay: 1.136 * totalEstimateTrees,
+                perYear: 415 * totalEstimateTrees,
+                metricSystem: 'Cubic metres'
+            },
+            absorbtion: {
+                perDay: 0.378 * totalEstimateTrees,
+                perYear: 138 * totalEstimateTrees,
+                metricSystem: 'Cubic metres'
+            }
+        }
+    } else {
+        log.info(`No forests found inside the current map view`);   
+    }
 }
 
 module.exports = function (db) {
@@ -150,8 +260,10 @@ module.exports = function (db) {
         findUsers,
         userFindOrCreate,
         resolveInvitationLink,
-        //getInvitationLink
         trackBadge,
-        hasRole
+        hasRole,
+        hasPerms,
+        forestInPolygon,
+        applyConstants
     }
 }

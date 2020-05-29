@@ -21,7 +21,8 @@ function parseBody(body) {
         description: body.description,
         totalEuroCost: body.totalEuroCost,
         totalEuroFounded: body.totalEuroFounded,
-        transactionData: бодъ.transactionData
+        transactionData: body.transactionData,
+        managerId: body.managerId
     }
 }
 
@@ -34,7 +35,8 @@ function restCampaignsCreate(req, res) {
     }
 
     let campaignObject = parseBody(req.body);
-    campaignObject.managerId = req.user.id
+    delete campaignObject.managerId;
+    campaignObject.managerId = req.user.id;
 
     _handler.campaignsCreate(campaignObject, function (err) {
         if (err) {
@@ -73,7 +75,7 @@ function restCampaignsEdit(req, res) {
             if (err) {
                 log.error((typeof err == 'object') ? err.toString() : err);
             } else {
-                return _rest.response(res, 201, { url: req.path, method: req.method }, requestId);
+                return _rest.response(res, 200, { url: req.path, method: req.method }, requestId);
             }
         });
     }).catch(function () {
@@ -94,7 +96,7 @@ function restCampaignsDelete(req, res) {
             if (err) {
                 log.error((typeof err == 'object') ? err.toString() : err);
             } else {
-                return _rest.response(res, 201, { url: req.path, method: req.method }, requestId);
+                return _rest.response(res, 200, { url: req.path, method: req.method }, requestId);
             }
         });
     }).catch(function () {
@@ -102,25 +104,19 @@ function restCampaignsDelete(req, res) {
     });
 }
 
-global.GDO.hasPerms(req.user.id, {campaignId:req.params.campaignId}).then(function () {
-    
-}).catch(function () {
-    return _rest.error(res, requestId, { name: 'PermissionDenied' });
-});
-
 function restCampaignsGetConfig() {
     return [
         {
             method: 'get',
             resource: 'campaigns/:campaignId?',
             apiRestriction: 'base',
-            handler: restCampaignsGet
+            handler: restCampaignsGet//D
         },
         {
             method: 'post',
             resource: 'campaigns',
             apiRestriction: 'plass',
-            handler: restCampaignsCreate
+            handler: restCampaignsCreate//D
         },
         {
             method: 'put',
@@ -132,7 +128,7 @@ function restCampaignsGetConfig() {
             method: 'delete',
             resource: 'campaigns/:campaignId',
             apiRestriction: 'plass',
-            handler: restCampaignsDelete
+            handler: restCampaignsDelete//D
         },
     ]
 }

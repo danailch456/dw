@@ -34,6 +34,10 @@ let objectMap = {
     PermissionDenied:{
         status: 403,
         error_msg: 'no_permission'
+    },
+    NoForestsInMapView:{
+        status:404,
+        error_msg:'no_forests_in_map_view'
     }
 }
 

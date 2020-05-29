@@ -120,7 +120,7 @@ function restRoleAssignmentsGetConfig() {
             method: 'delete',
             resource: 'role/assigned/:grantedTo/:role?',
             apiRestriction: 'plmgr',
-            handler: restRoleAssignmentsDelete
+            handler: restRoleAssignmentsDelete//D
         },
     ]
 }

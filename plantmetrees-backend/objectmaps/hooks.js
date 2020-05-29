@@ -1,12 +1,3 @@
-/*
- * Filename: modules\hooks.js
- *
- * Created Date: Wednesday, November 20th 2019, 5:24:37 pm
- * Author: Danail Chaushev
- *
- * Copyright (c) 2019 PlantMeTrees
- */
-
 /* Init the logger module */
 const logger = require('../management/logger.js');
 const log = new logger().get();
@@ -52,6 +43,7 @@ function userBeforeSave(instance, options) {
  * @param {Object} options The options given to the create operation
  */
 function userAfterCreate(instance, options) {
+    log.info(`Creating a community badge for user ${instance.dataValues.id}`);
     global.GDO.trackBadge(instance.dataValues.id, 'community');
 }
 
@@ -63,8 +55,10 @@ function userAfterCreate(instance, options) {
  */
 function roleAssignmentsAfterCreate(instance, options) {
     if (instance.dataValues.role == 'planter_supporter') {
+        log.info(`Creating a suppoter badge for user ${instance.dataValues.grantedTo}`);
         global.GDO.trackBadge(instance.dataValues.grantedTo, 'supporter');
     } else if (instance.dataValues.role == 'planter_associate') {
+        log.info(`Creating a organizer badge for user ${instance.dataValues.grantedTo}`);
         global.GDO.trackBadge(instance.dataValues.grantedTo, 'organizer');
     }
 }
@@ -78,6 +72,7 @@ function roleAssignmentsAfterCreate(instance, options) {
  * @param {Object} options The options given to the save operation
  */
 function geoTagBeforeSave(instance, options) {
+    log.info(`Gnerating identity hash for geotag`);
     if (instance._changed.latitude || instance._changed.longitude || instance._changed.datetime) {
         instance.dataValues.identityHash = sha3_256(`${instance.dataValues.latitude};${instance.dataValues.longitude};${instance.dataValues.datetime}`);
     }
@@ -93,6 +88,7 @@ function invitationLinksBeforeCreate(instance, options) {
 }
 
 function forestsAfterSave(instance, options) {
+    log.info()
     if (instance._changed.state && instance.dataValues.state == 'successfuly_planted') {
         global.GDO.trackBadge(
             global.GDO.getForestManager(instance.dataValues.id),
@@ -111,7 +107,6 @@ function transactionsAfterCreate(instance, options) {
 }
 
 function invitationLinksAfterSave(instance, options) {
-    log.info('jiv sam');
     if (instance._changed.peopleInvited) {
         global.GDO.trackBadge(instance.dataValues.ownerId,'community');
     }
@@ -121,8 +116,7 @@ module.exports = {
     User: {
         beforeFind: userBeforeFind,
         beforeSave: userBeforeSave,
-        //userBeforeUpdate: userBeforeSave
-        //afterCreate: userAfterCreate
+        afterCreate: userAfterCreate
     },
     GeoTags: {
         beforeSave: geoTagBeforeSave,
@@ -131,15 +125,15 @@ module.exports = {
     InvitationLinks: {
         //beforeCreate: invitationLinksBeforeCreate,
         afterSave: invitationLinksAfterSave,
-        //afterUpdate: invitationLinksAfterSave
+        afterUpdate: invitationLinksAfterSave
     },
-    /*roleAssignments: {
+    roleAssignments: {
         afterCreate: roleAssignmentsAfterCreate
-    },*/
-    /*Forests: {
+    },
+    Forests: {
         afterSave: forestsAfterSave
-    },*/
-    /*Transactions: {
+    },
+    Transactions: {
         afterCreate: transactionsAfterCreate
-    }*/
+    }
 }

@@ -28,6 +28,7 @@
     "passport-facebook": "^3.0.0",
     "passport-google-oauth": "^2.0.0",
     "passport-local": "^1.0.0",
+    "point-in-polygon": "^1.0.1",
     "sequelize": "^5.19.0",
     "uuidv4": "^5.0.1",
     "winston": "^3.2.1"
